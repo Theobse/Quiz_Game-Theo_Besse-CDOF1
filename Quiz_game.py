@@ -1,3 +1,5 @@
+import json
+
 class Question:
     def __init__(self, text, options, correct_option):
         self.text = text
@@ -19,22 +21,24 @@ class QuizGame:
         self.questions = questions
         self.score = 0
 
+    def get_user_answer(self):
+        while True:
+            try:
+                user_answer = int(input("Enter the number of your answer: "))
+                if 1 <= user_answer <= len(self.questions.options):
+                    return user_answer
+                else:
+                    print("Please enter a valid number.")
+            except ValueError:
+                print("Please enter a valid number.")
+
     def start_game(self):
         print("Welcome to the Quiz Game!")
-        
+
         for question in self.questions:
             question.display()
             
-            # Validation de l'entrée utilisateur
-            while True:
-                try:
-                    user_answer = int(input("Enter the number of your answer: "))
-                    if 1 <= user_answer <= len(question.options):
-                        break
-                    else:
-                        print("Please enter a valid number.")
-                except ValueError:
-                    print("Please enter a number.")
+            user_answer = self.get_user_answer()
 
             if question.check_answer(user_answer):
                 print("Correct!\n")
@@ -47,13 +51,20 @@ class QuizGame:
         print(f"Game Over! Your final score is: {self.score}/{len(self.questions)}")
 
 
-# Sample questions
-question1 = Question("What is the capital of France?", ["Paris", "Berlin", "Madrid", "Rome"], 1)
-question2 = Question("Which planet is known as the Red Planet?", ["Earth", "Mars", "Jupiter", "Venus"], 2)
-question3 = Question("What is the largest mammal?", ["Elephant", "Blue Whale", "Giraffe", "Hippopotamus"], 2)
+def load_questions_from_file(filename):
+    with open(filename, "r") as file:
+        questions_data = json.load(file)
 
-# Create a list of questions
-questions_list = [question1, question2, question3]
+    questions = []
+    for data in questions_data:
+        question = Question(data["text"], data["options"], data["correct_option"])
+        questions.append(question)
+
+    return questions
+
+
+# Sample questions (replace with loading questions from a file)
+questions_list = load_questions_from_file("questions.json")
 
 # Create a QuizGame instance with the list of questions
 quiz_game = QuizGame(questions_list)
