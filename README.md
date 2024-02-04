@@ -2,11 +2,31 @@
 
 Ce projet est un jeu de quiz en Python où le joueur doit répondre à plusieurs questions pour tenter de gagner le jeu.
 
-## Comment exécuter le projet
+## Comment jouer au jeu de quiz
 
-1. Clonez ce dépôt avec la commande suivante : git clone https://github.com/Theobse/Quiz_Game-Theo_Besse-CDOF1.git
-2. Accédez au répertoire du projet : cd Quiz_Game-Theo_Besse-CDOF1
-3. Exécutez le jeu en utilisant la commande suivante : python quiz_game.py
+Si vous souhaitez jouer au jeu de quiz sans apporter de modifications, suivez ces étapes simples :
+
+1. Assurez-vous que Python est installé sur votre système. Si ce n'est pas le cas, vous pouvez le télécharger depuis [python.org](https://www.python.org/downloads/).
+
+2. Clonez ce dépôt avec la commande suivante :
+    ```bash
+    git clone https://github.com/Theobse/Quiz_Game-Theo_Besse-CDOF1.git
+    ```
+
+3. Accédez au répertoire du projet :
+    ```bash
+    cd Quiz_Game-Theo_Besse-CDOF1
+    ```
+
+4. Exécutez le jeu en utilisant la commande suivante :
+    ```bash
+    python quiz_game.py
+    ```
+
+5. Suivez les instructions à l'écran pour répondre aux questions et découvrez votre score à la fin du jeu.
+
+Amusez-vous bien et bonne chance!
+
 
 ## Comment contribuer au projet
 

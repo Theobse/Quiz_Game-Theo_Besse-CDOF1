@@ -21,14 +21,28 @@ class QuizGame:
 
     def start_game(self):
         print("Welcome to the Quiz Game!")
+        
         for question in self.questions:
             question.display()
-            user_answer = int(input("Enter the number of your answer: "))
+            
+            # Validation de l'entrée utilisateur
+            while True:
+                try:
+                    user_answer = int(input("Enter the number of your answer: "))
+                    if 1 <= user_answer <= len(question.options):
+                        break
+                    else:
+                        print("Please enter a valid number.")
+                except ValueError:
+                    print("Please enter a number.")
+
             if question.check_answer(user_answer):
                 print("Correct!\n")
                 self.score += 1
             else:
-                print(f"Wrong! The correct answer was {question.correct_option}: {question.options[question.correct_option - 1]}\n")
+                correct_option = question.correct_option
+                correct_answer = question.options[correct_option - 1]
+                print(f"Wrong! The correct answer was {correct_option}: {correct_answer}\n")
 
         print(f"Game Over! Your final score is: {self.score}/{len(self.questions)}")
 
