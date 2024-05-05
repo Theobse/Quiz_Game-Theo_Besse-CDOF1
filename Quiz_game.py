@@ -25,7 +25,7 @@ class QuizGame:
         while True:
             try:
                 user_answer = int(input("Enter the number of your answer: "))
-                if 1 <= user_answer <= len(self.questions.options):
+                if 1 <= user_answer <= len(self.questions):
                     return user_answer
                 else:
                     print("Please enter a valid number.")
